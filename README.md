@@ -3,6 +3,7 @@
 ## Commands
 
 - alex lex.x -o gen/lex.hs
+- ghc test -odir bin/ -hidir bin/ -o bin/test
 
 ## Resources
 
