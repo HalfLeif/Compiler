@@ -9,20 +9,19 @@
 
 ## Commands
 
-- bnfc grammar.cf -o gen/
-- alex gen/LexGrammar.x
-- happy gen/ParGrammar.y
-
-### Outdated
-
-- ghc -i gen/lex.hs test -odir bin/ -hidir bin/ -o bin/test
+```
+bnfc grammar.cf -o gen/
+alex gen/LexGrammar.x
+happy gen/ParGrammar.y
+```
 
 ## ghci
 
-- ghci -i gen/*.hs
-- :reload
-- import ParGrammar
-- pExpr $ myLexer "1+1"
+```
+ghci -i *.hs gen/*.hs
+:reload
+:m Test
+```
 
 ## Resources
 
