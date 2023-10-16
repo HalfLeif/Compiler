@@ -3,7 +3,13 @@
 ## Commands
 
 - alex lex.x -o gen/lex.hs
-- ghc test -odir bin/ -hidir bin/ -o bin/test
+- ghc -i gen/lex.hs test -odir bin/ -hidir bin/ -o bin/test
+- happy parse.y -o gen/parse.hs
+
+## ghci
+
+- :load gen/lex.hs
+- import Lex
 
 ## Resources
 

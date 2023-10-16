@@ -1,4 +1,4 @@
-
+import Foo
 
 main :: IO ()
-main = print "hello world"
+main = print foobar >> print "end"
