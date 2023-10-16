@@ -1,5 +1,9 @@
-import Foo
-import Lex
+module Test where
 
-main :: IO ()
-main = print foobar >> print (alexScanTokens "foo = 100") >> print "end"
+import ParGrammar
+import Prelude
+
+parse = pProgram . myLexer
+
+foo :: IO ()
+foo = print (parse "#include<foo>") >> print "end"
