@@ -13,6 +13,7 @@
 bnfc grammar.cf -o gen/
 alex gen/LexGrammar.x
 happy gen/ParGrammar.y
+ghc -i gen/*.hs
 ```
 
 ## ghci
@@ -22,6 +23,10 @@ ghci -i *.hs gen/*.hs
 :reload
 :m Test
 ```
+
+## Run
+
+gen/TestGrammar.exe test/test1.cc
 
 ## Resources
 
