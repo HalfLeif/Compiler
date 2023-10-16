@@ -1,5 +1,5 @@
 {
-module Lex (lex) where
+module Lex (lex, Token, alexScanTokens) where
 }
 
 %wrapper "basic"
@@ -11,22 +11,34 @@ tokens :-
 
   $white+                        ;
   "--".*                         ;
-  let                            { \s -> Let }
-  in                             { \s -> In }
-  $digit+                        { \s -> Int (read s) }
-  [\=\+\-\*\/\(\)]               { \s -> Sym (head s) }
-  $alpha [$alpha $digit \_]*     { \s -> Var s }
+  let                            { \s -> TokenLet }
+  in                             { \s -> TokenIn }
+  $digit+                        { \s -> TokenInt (read s) }
+  \=  { \s -> TokenEq }
+  \+  { \s -> TokenPlus }
+  \-  { \s -> TokenMinus }
+  \*  { \s -> TokenStar }
+  \/  { \s -> TokenDiv }
+  \(  { \s -> TokenOB }
+  \)  { \s -> TokenCB }
+  $alpha [$alpha $digit \_]*     { \s -> TokenVar s }
 
 {
 -- Each action has type :: String -> Token
 
 -- The token type:
 data Token
-  = Let
-  | In
-  | Sym Char
-  | Var String
-  | Int Int
+  = TokenLet
+  | TokenIn
+  | TokenEq
+  | TokenPlus
+  | TokenMinus
+  | TokenStar
+  | TokenDiv
+  | TokenOB
+  | TokenCB
+  | TokenVar String
+  | TokenInt Int
   deriving (Eq, Show)
 
 main = do
